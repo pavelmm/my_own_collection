@@ -1,0 +1,12 @@
+---
+- name: test module
+  hosts: localhost
+  tasks:
+    - name: test_my_own_module
+      my_own_namespace.my_collection.my_own_module:
+        path: "/tmp/log.txt"
+        text: "Hello world"
+      register: vector_hold
+    - name: info
+      debug:
+        msg: STATUS {{ vector_hold.message }}.      
